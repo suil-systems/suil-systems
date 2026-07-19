@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Suil Systems</title>
+<meta name="description" content="Sean Cusick — Scottish consultant and educator based in Warsaw. Nineteen years across space, leadership, language, and data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:     #FFFFFF;
+    --fg:     #111111;
+    --blue:   #1A56DB;
+    --orange: #FF5A1F;
+    --gray:   #6B6B6B;
+    --line:   #E2E2E2;
+    --panel:  #111111;
+    --panel-fg:   #FFFFFF;
+    --panel-muted:#CFCFCF;
+  }
+  [data-theme="dark"] {
+    --bg:     #0E0E0E;
+    --fg:     #F5F5F5;
+    --blue:   #5B8CFF;
+    --orange: #FF7A40;
+    --gray:   #9A9A9A;
+    --line:   #2A2A2A;
+    --panel:  #F5F5F5;
+    --panel-fg:   #0E0E0E;
+    --panel-muted:#5A5A5A;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg); color:var(--fg);
+    font-family:'Fira Sans', sans-serif;
+    transition:background .2s, color .2s;
+  }
+  a { text-decoration:none; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 32px; }
+  @media(max-width:640px){ .wrap { padding:0 20px; } }
+
+  /* NAV */
+  nav {
+    border-bottom:2px solid var(--fg);
+    position:sticky; top:0; background:var(--bg); z-index:50;
+  }
+  .nav-inner {
+    max-width:1080px; margin:0 auto; padding:20px 32px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  @media(max-width:640px){ .nav-inner { padding:16px 20px; } }
+  .nav-logo {
+    font-family:'Fira Code', monospace; font-weight:600;
+    font-size:18px; color:var(--fg);
+  }
+  .nav-logo .dot { color:var(--orange); }
+  .nav-links { display:flex; gap:36px; font-size:14px; font-weight:500; }
+  .nav-links a { color:var(--fg); }
+  .nav-links a:hover { color:var(--blue); }
+  .nav-links a.active { color:var(--blue); }
+  @media(max-width:760px){ .nav-links { display:none; } }
+  .nav-right { display:flex; align-items:center; gap:16px; }
+  .nav-cta {
+    background:var(--orange); color:var(--bg);
+    padding:10px 20px; font-family:'Fira Code', monospace;
+    font-size:14px; font-weight:600;
+  }
+  .nav-cta:hover { background:#D44A16; }
+  .theme-toggle {
+    display:flex; align-items:center; gap:8px;
+    background:none; border:1.5px solid var(--line);
+    padding:8px 14px; font-family:'Fira Code', monospace;
+    font-size:13px; font-weight:500; color:var(--fg); cursor:pointer;
+  }
+  .theme-toggle:hover { border-color:var(--blue); color:var(--blue); }
+  .theme-toggle svg { width:14px; height:14px; }
+  @media(max-width:480px){ .theme-toggle span { display:none; } }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding:72px 0 56px;
+    border-bottom:2px solid var(--fg);
+  }
+  .page-eyebrow {
+    font-family:'Fira Code', monospace; font-size:13px; font-weight:600;
+    color:var(--blue); letter-spacing:.08em; margin-bottom:20px;
+  }
+  .page-header h1 {
+    font-family:'Fira Code', monospace; font-weight:700;
+    font-size:clamp(32px, 5vw, 52px); line-height:1.1; max-width:680px;
+    margin-bottom:20px;
+  }
+  .page-header h1 .hl { color:var(--orange); }
+  .page-header p {
+    font-size:18px; color:var(--gray); max-width:540px; line-height:1.65;
+  }
+
+  /* SECTIONS */
+  .about-section { padding:64px 0; border-bottom:1px solid var(--line); }
+  .about-section:last-of-type { border-bottom:none; }
+  .section-label {
+    font-family:'Fira Code', monospace; font-size:13px; font-weight:600;
+    color:var(--blue); letter-spacing:.08em; margin-bottom:20px;
+  }
+  .section-title {
+    font-family:'Fira Code', monospace; font-weight:700;
+    font-size:clamp(22px, 3vw, 30px); margin-bottom:20px; line-height:1.2;
+  }
+  .prose {
+    font-size:16px; color:var(--gray); line-height:1.75; max-width:680px;
+  }
+  .prose + .prose { margin-top:16px; }
+
+  /* TIMELINE */
+  .timeline { margin-top:40px; }
+  .timeline-row {
+    display:grid; grid-template-columns:140px 1fr;
+    gap:24px; padding:20px 0; border-top:1px solid var(--line);
+  }
+  .timeline-row:last-child { border-bottom:1px solid var(--line); }
+  @media(max-width:600px){ .timeline-row { grid-template-columns:1fr; gap:6px; } }
+  .timeline-yr {
+    font-family:'Fira Code', monospace; font-size:12px; font-weight:600;
+    color:var(--orange); letter-spacing:.06em; padding-top:2px;
+  }
+  .timeline-what { font-size:15px; color:var(--fg); line-height:1.55; }
+  .timeline-what span { color:var(--gray); font-size:13.5px; display:block; margin-top:3px; }
+
+  /* SKILLS GRID */
+  .skills-grid {
+    display:grid; grid-template-columns:repeat(3, 1fr);
+    gap:0; margin-top:32px;
+    border:1px solid var(--line);
+  }
+  @media(max-width:720px){ .skills-grid { grid-template-columns:1fr 1fr; } }
+  @media(max-width:480px){ .skills-grid { grid-template-columns:1fr; } }
+  .skill-cell {
+    padding:20px 22px; border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .skill-cell:nth-child(3n){ border-right:none; }
+  .skill-label {
+    font-family:'Fira Code', monospace; font-size:11px; font-weight:600;
+    color:var(--blue); letter-spacing:.08em; margin-bottom:8px;
+  }
+  .skill-items { font-size:13px; color:var(--gray); line-height:1.7; }
+
+  /* CREDENTIAL BLOCK */
+  .credential-block {
+    margin-top:32px; padding:28px 32px;
+    border:2px solid var(--fg);
+    display:grid; grid-template-columns:1fr 1fr; gap:32px;
+  }
+  @media(max-width:600px){ .credential-block { grid-template-columns:1fr; } }
+  .cred-label {
+    font-family:'Fira Code', monospace; font-size:11px; font-weight:600;
+    color:var(--orange); letter-spacing:.08em; margin-bottom:10px;
+  }
+  .cred-text { font-size:14px; color:var(--gray); line-height:1.65; }
+
+  /* LANGUAGES */
+  .lang-grid {
+    display:grid; grid-template-columns:repeat(4, 1fr);
+    gap:0; margin-top:32px; border:1px solid var(--line);
+  }
+  @media(max-width:720px){ .lang-grid { grid-template-columns:1fr 1fr; } }
+  .lang-cell {
+    padding:18px 20px; border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .lang-cell:nth-child(4n){ border-right:none; }
+  .lang-name {
+    font-family:'Fira Code', monospace; font-size:13px; font-weight:600;
+    margin-bottom:4px;
+  }
+  .lang-level { font-size:12px; color:var(--gray); }
+
+  /* CTA */
+  .cta-section { padding:72px 0; text-align:center; border-top:2px solid var(--fg); }
+  .cta-section h2 {
+    font-family:'Fira Code', monospace; font-weight:700;
+    font-size:clamp(24px, 3.8vw, 36px); max-width:560px;
+    margin:0 auto 18px; line-height:1.2;
+  }
+  .cta-section h2 .hl { color:var(--orange); }
+  .cta-section p { color:var(--gray); max-width:420px; margin:0 auto 32px; font-size:15px; }
+  .cta-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--orange); color:var(--bg);
+    padding:14px 28px; font-family:'Fira Code', monospace;
+    font-weight:600; font-size:14px;
+    border:2px solid var(--orange); display:inline-block;
+  }
+  .btn-primary:hover { background:var(--fg); border-color:var(--fg); }
+  .btn-secondary {
+    padding:14px 26px; font-family:'Fira Code', monospace;
+    font-weight:600; font-size:14px; color:var(--fg);
+    border:2px solid var(--fg); display:inline-block;
+  }
+  .btn-secondary:hover { background:var(--fg); color:var(--bg); }
+
+  /* FOOTER */
+  footer { padding:36px 0; border-top:2px solid var(--fg); }
+  .footer-inner {
+    display:flex; justify-content:space-between;
+    align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  .footer-logo { font-family:'Fira Code', monospace; font-size:15px; color:var(--fg); }
+  .footer-logo span { color:var(--orange); }
+  .footer-meta {
+    font-size:13px; color:var(--gray);
+    display:flex; gap:22px; flex-wrap:wrap;
+    font-family:'Fira Code', monospace;
+  }
+  .footer-meta a { color:var(--gray); }
+  .footer-meta a:hover { color:var(--blue); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">suil<span class="dot">.</span>systems</a>
+    <div class="nav-links">
+      <a href="/#organisations">Organisations</a>
+      <a href="/#individuals">Individuals</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+        <span id="themeLabel">DARK</span>
+      </button>
+      <a href="mailto:sean.matthew.cusick@gmail.com" class="nav-cta">CONTACT</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-header">
+  <div class="wrap">
+    <div class="page-eyebrow">// ABOUT</div>
+    <h1>A career built on reading rooms, not staying in <span class="hl">one lane.</span></h1>
+    <p>Sean Cusick is a Scottish consultant and educator based in Warsaw. Nineteen years across hospitality, international development, the space industry, data, and language — all drawing on the same underlying skill.</p>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="wrap">
+    <div class="section-label">// THE PRACTICE</div>
+    <div class="section-title">One diagnostic skill. Two doors in.</div>
+    <p class="prose">Sùil means eye and hope in Scottish Gaelic — rooted in an older word for the sun, as the eye of the sky. That double meaning is the thesis of this practice: see clearly first, then find the way forward.</p>
+    <p class="prose">The breadth in Sean's career isn't a detour. Running a 300-person NGO under pressure, advising a space-tech startup that needed €500k before it could operate, managing a hotel through political upheaval, teaching English to adult professionals who are navigating a second language and a second culture simultaneously — all of it is practice in reading what's actually going on in a room, and then helping the people in it move.</p>
+    <p class="prose">Suil Systems offers that skill in two directions: to organisations that need clearer communication, sharper strategy, or a way through conflict — and to individuals who want fluency, structure, or a space to think out loud with someone who will be direct with them.</p>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="wrap">
+    <div class="section-label">// CAREER</div>
+    <div class="section-title">The record.</div>
+    <div class="timeline">
+      <div class="timeline-row">
+        <div class="timeline-yr">2004–2012</div>
+        <div class="timeline-what">Billing &amp; Accounting Assistant / Event Server
+          <span>Crowne Plaza Glasgow — financial reconciliation, bar operations, event coordination</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2012–2013</div>
+        <div class="timeline-what">Customer Service Representative
+          <span>Teleperformance UK — Waitrose Wines and John Lewis online retail</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2013–2017</div>
+        <div class="timeline-what">English Language Teacher
+          <span>TAMOS Education, Almaty — Elementary to Advanced, IELTS/TOEFL/SAT preparation</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2013–2015</div>
+        <div class="timeline-what">Director of Organisational Development
+          <span>AIESEC in Kazakhstan — annual strategy, 7 departments, 5 branch offices, UN partnerships</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2015–2016</div>
+        <div class="timeline-what">Chief Executive Officer
+          <span>AIESEC in Kazakhstan — 300 staff, board reporting, international coordination, SDG alignment</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2017–2018</div>
+        <div class="timeline-what">Chief Information Officer / General Manager
+          <span>WEStay @ Group, Bagan, Myanmar — Bagan Lotus Hotel, 10★ Booking.com rating. Contract ended due to political instability.</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2018–2019</div>
+        <div class="timeline-what">Head of Business Development
+          <span>Alba Orbital, Glasgow — €500k ESA funding, £150k Scottish Enterprise, university partnerships</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2020–2021</div>
+        <div class="timeline-what">Business Analyst
+          <span>Responsive Access Ltd, Edinburgh — orbital launch bid writing, sales, risk assessment</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2022</div>
+        <div class="timeline-what">Data &amp; Compliance Manager
+          <span>Hempire International, Kraków — UK office setup, grant writing, financial forecasting</span>
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-yr">2022–present</div>
+        <div class="timeline-what">Founder &amp; Director — Suil Systems / SMCusick Consulting
+          <span>Warsaw — executive training, strategic communication, business English. Clients include State Sugar Board and Polish State Gas.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="wrap">
+    <div class="section-label">// SKILLS</div>
+    <div class="section-title">What's in the toolkit.</div>
+    <div class="skills-grid">
+      <div class="skill-cell">
+        <div class="skill-label">DATA &amp; ANALYSIS</div>
+        <div class="skill-items">R, Python, SQL, Excel<br>Tableau, Power BI<br>GIS: ArcGIS Pro, QGIS</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-label">DEVELOPMENT</div>
+        <div class="skill-items">JavaScript, Three.js<br>Ruby, Bash, C++, C#<br>Git, GitHub/GitLab</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-label">DESIGN</div>
+        <div class="skill-items">Adobe Suite<br>Affinity Suite<br>Autodesk Maya, 3ds Max</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-label">PROJECT MGMT</div>
+        <div class="skill-items">Agile, Scrum, Kanban<br>4 Disciplines of Execution<br>Grant &amp; bid writing</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-label">COACHING</div>
+        <div class="skill-items">Executive training<br>TESOL / Business English<br>Conflict facilitation</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-label">CURRENTLY</div>
+        <div class="skill-items">Computer Science RNCP L7<br>42 Warsaw (2025–2028)<br>GIS for Climate Action, Esri</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="wrap">
+    <div class="section-label">// LANGUAGES</div>
+    <div class="section-title">Working languages.</div>
+    <div class="lang-grid">
+      <div class="lang-cell">
+        <div class="lang-name">English</div>
+        <div class="lang-level">Native</div>
+      </div>
+      <div class="lang-cell">
+        <div class="lang-name">Russian</div>
+        <div class="lang-level">B1 spoken / A2 written</div>
+      </div>
+      <div class="lang-cell">
+        <div class="lang-name">Polish</div>
+        <div class="lang-level">A2 listening / A1 other</div>
+      </div>
+      <div class="lang-cell">
+        <div class="lang-name">Scottish Gaelic</div>
+        <div class="lang-level">A2 / A1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="wrap">
+    <div class="section-label">// WHERE THIS IS GOING</div>
+    <div class="section-title">The longer aim.</div>
+    <p class="prose">Something happens consistently in the coaching and English sessions: clients start talking about what's actually going on, not just the surface task they came with. Several have said, unprompted, that Sean should be doing this professionally — as a therapist or counsellor.</p>
+    <p class="prose" style="margin-top:16px">The plan is to take that seriously. Suil Systems generates the income and the structured client hours that fund and create space for formal training in counselling or psychotherapy. That credential is the medium-term goal — not a pivot away from the consulting and coaching work, but a deepening of it.</p>
+    <div class="credential-block">
+      <div>
+        <div class="cred-label">NOW</div>
+        <div class="cred-text">Executive coaching and consulting in Warsaw. Business English. Strategic communication. Building the anchor client base.</div>
+      </div>
+      <div>
+        <div class="cred-label">NEXT</div>
+        <div class="cred-text">Enrol in a part-time counselling or psychotherapy programme. Transition toward qualified therapeutic practice over 3–5 years, alongside the consulting work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap">
+    <h2>If this sounds like what you <span class="hl">need —</span></h2>
+    <p>Tell me what's going on. For your team or for you.</p>
+    <div class="cta-buttons">
+      <a href="mailto:sean.matthew.cusick@gmail.com" class="btn-primary">EMAIL SEAN →</a>
+      <a href="/" class="btn-secondary">← BACK TO HOME</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-logo">sùil<span>.</span>systems</div>
+    <div class="footer-meta">
+      <span>WARSAW, PL</span>
+      <a href="mailto:sean.matthew.cusick@gmail.com">EMAIL</a>
+      <a href="https://linkedin.com/in/sean-m-cusick" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="https://sean-m-cusick.github.io" target="_blank" rel="noopener">PORTFOLIO</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const root  = document.documentElement;
+  const btn   = document.getElementById('themeToggle');
+  const sun   = document.getElementById('iconSun');
+  const moon  = document.getElementById('iconMoon');
+  const label = document.getElementById('themeLabel');
+
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      root.setAttribute('data-theme', 'dark');
+      sun.style.display  = 'none';
+      moon.style.display = 'block';
+      label.textContent  = 'LIGHT';
+      localStorage.setItem('suil-theme', 'dark');
+    } else {
+      root.removeAttribute('data-theme');
+      sun.style.display  = 'block';
+      moon.style.display = 'none';
+      label.textContent  = 'DARK';
+      localStorage.setItem('suil-theme', 'light');
+    }
+  }
+
+  const saved = localStorage.getItem('suil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+  btn.addEventListener('click', function() {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+</script>
+
+</body>
+</html>
