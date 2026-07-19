@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suil Systems | Executive Coaching & Strategic Advisory Warsaw</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;600&family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #111111;
+            --white: #FFFFFF;
+            --blue: #5B8CFF;
+            --blue-dark: #1A56DB;
+            --orange: #C23A0A;
+            --orange-hover: #9A2F08;
+            --gray: #E8E8E8;
+            --gray-dark: #777777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            color: var(--ink);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .btn, .tag, .nav-links a {
+            font-family: 'Fira Mono', monospace;
+            font-weight: 500;
+        }
+
+        /* === NAV === */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue-dark);
+        }
+
+        /* === HERO === */
+        .hero {
+            padding: 6rem 3rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-headline {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        .hero-headline mark {
+            background: none;
+            color: var(--orange);
+            padding: 0;
+        }
+
+        .hero-subhead {
+            font-size: 1.125rem;
+            color: var(--gray-dark);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: var(--white);
+            border-color: var(--orange);
+        }
+
+        .btn-primary:hover {
+            background: var(--orange-hover);
+            border-color: var(--orange-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--ink);
+            border-color: var(--ink);
+        }
+
+        .btn-secondary:hover {
+            background: var(--ink);
+            color: var(--white);
+        }
+
+        /* === PROOF STRIP === */
+        .proof {
+            background: var(--gray);
+            padding: 2rem 3rem;
+            margin-top: 4rem;
+        }
+
+        .proof-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .proof-item {
+            border-left: 3px solid var(--blue);
+            padding-left: 1rem;
+        }
+
+        .proof-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--blue-dark);
+        }
+
+        .proof-label {
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+        }
+
+        /* === TWO DOORS === */
+        .doors {
+            padding: 4rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .doors-section {
+            margin-bottom: 3rem;
+        }
+
+        .doors-headline {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .doors-headline::before {
+            content: "";
+            display: block;
+            width: 2rem;
+            height: 3px;
+            background: var(--blue);
+        }
+
+        .doors-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .doors-item {
+            padding: 1.5rem;
+            border: 1px solid var(--gray);
+            transition: border-color 0.2s ease;
+        }
+
+        .doors-item:hover {
+            border-color: var(--blue);
+        }
+
+        .doors-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .doors-desc {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        /* === ABOUT TEASER === */
+        .about-teaser {
+            padding: 4rem 3rem;
+            background: var(--gray);
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .about-headline {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--gray-dark);
+        }
+
+        /* === FOOTER === */
+        .footer {
+            padding: 3rem;
+            border-top: 2px solid var(--gray);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+            margin-top: 4rem;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .nav, .hero, .doors, .proof {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .hero-headline {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .doors-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="logo">SUIL<span>SYSTEMS</span></div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#proof">Track Record</a>
+            <a href="about.html">About</a>
+            <a href="mailto:contact@suil.systems">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-tags">
+            <span class="tag">Warsaw · Poland</span>
+            <span class="tag">Executive Coaching</span>
+        </div>
+
+        <h1 class="hero-headline">
+            Clear sight on your situation. Then we build a path <mark>forward.</mark>
+        </h1>
+
+        <p class="hero-subhead">
+            Executive coaching and strategic advisory for boards, leadership teams, and state-enterprise leadership. Fifteen years across UK, Kazakhstan, Myanmar, and Poland. Evidence-led, direct communication, no coaching clichés.
+        </p>
+
+        <div class="hero-actions">
+            <a href="mailto:contact@suil.systems" class="btn btn-primary">Start a Conversation</a>
+            <a href="about.html" class="btn btn-secondary">See My Background</a>
+        </div>
+    </header>
+
+    <section class="proof" id="proof">
+        <div class="proof-grid">
+            <div class="proof-item">
+                <div class="proof-number">€650k+</div>
+                <div class="proof-label">Secured from ESA + Scottish Enterprise</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">300</div>
+                <div class="proof-label">Staff Managed Across 5 Branch Offices</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">19 yrs</div>
+                <div class="proof-label">Cross-Cultural Leadership Experience</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">Warsaw</div>
+                <div class="proof-label">Existing Board-Level Relationships</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="doors" id="services">
+        <div class="doors-section">
+            <h2 class="doors-headline">What I Work On</h2>
+            <ul class="doors-list">
+                <li class="doors-item">
+                    <h3 class="doors-title">Executive Training</h3>
+                    <p class="doors-desc">Presentation skills, negotiation, stakeholder communication for leadership teams. Built for board-level contexts, not generic workshops.</p>
+                </li>
+                <li class="doors-item">
+                    <h3 class="doors-title">Strategic Communication Advisory</h3>
+                    <p class="doors-desc">Stakeholder mapping, internal communications strategy, cross-border team alignment. For state enterprises and multinationals.</p>
+                </li>
+                <li class="doors-item">
+                    <h3 class="doors-title">Conflict Facilitation</h3>
+                    <p class="doors-desc">Boardroom dynamics, executive team friction, organisational disagreement at scale. From AIESEC experience managing 300-person organisational conflict.</p>
+                </li>
+                <li class="doors-item">
+                    <h3 class="doors-title">Business English (Leadership Level)</h3>
+                    <p class="doors-desc">Not grammar drills. Strategic communication in English for executives navigating international boardrooms, investor meetings, cross-cultural negotiations.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="about-teaser">
+        <h2 class="about-headline">Why This Approach?</h2>
+        <p class="about-text">
+            I read people and systems under pressure. Then help build a way forward—whether that's boardroom strategy, language barriers, or personal transition. Path toward formal psychotherapy credentialing underway.
+        </p>
+        <a href="about.html" class="btn btn-secondary">Read Full Background</a>
+    </section>
+
+    <footer class="footer">
+        <p>Suil Systems — Seán Matthew Cusick · Warsaw, Poland</p>
+        <p style="margin-top: 0.5rem;">contact@suil.systems · suil.systems</p>
+        <p style="margin-top: 1.5rem; font-size: 0.75rem;">Non-clinical coaching and training services. Not a substitute for licensed mental health care.</p>
+    </footer>
+
+</body>
+</html>

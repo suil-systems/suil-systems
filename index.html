@@ -1,391 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suil Systems | Executive Coaching & Strategic Advisory Warsaw</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;600&family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --ink: #111111;
-            --white: #FFFFFF;
-            --blue: #5B8CFF;
-            --blue-dark: #1A56DB;
-            --orange: #C23A0A;
-            --orange-hover: #9A2F08;
-            --gray: #E8E8E8;
-            --gray-dark: #777777;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sùil systems — Seán Matthew Cusick</title>
+<style>
+:root {
+  --purple: #6d4aff;
+  --purple-dim: #4a2fbf;
+  --bg: #07050d;
+  --fg: #e8e4f0;
+  --muted: #8884a0;
+  --card: rgba(15, 10, 30, 0.75);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+#bg-canvas {
+  position: fixed; top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0; pointer-events: none;
+}
+.content { position: relative; z-index: 1; min-height: 100vh; }
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 3rem;
+  backdrop-filter: blur(8px);
+  background: rgba(7, 5, 13, 0.5);
+  border-bottom: 1px solid rgba(109, 74, 255, 0.15);
+  position: sticky; top: 0; z-index: 10;
+}
+nav .logo { font-size: 1.4rem; font-weight: 700; color: var(--purple); letter-spacing: 0.05em; }
+nav ul { list-style: none; display: flex; gap: 2rem; }
+nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+nav a:hover { color: var(--purple); }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.hero {
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 80px);
+  padding: 0 3rem 4rem;
+  max-width: 900px;
+}
+.hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.05; margin-bottom: 0.5rem; }
+.hero .subtitle { font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--muted); margin-bottom: 2rem; }
+.hero .tagline { font-size: 1.1rem; color: var(--purple); margin-bottom: 2.5rem; font-style: italic; }
+.hero .intro { font-size: 1.15rem; color: var(--fg); max-width: 620px; margin-bottom: 3rem; opacity: 0.9; }
+.cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 0.8rem 2rem;
+  border-radius: 4px; text-decoration: none;
+  font-size: 0.95rem; font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--purple); color: #fff; }
+.btn-primary:hover { background: var(--purple-dim); }
+.btn-outline { border: 1px solid rgba(109, 74, 255, 0.4); color: var(--fg); }
+.btn-outline:hover { border-color: var(--purple); background: rgba(109, 74, 255, 0.1); }
 
-        html {
-            font-size: 16px;
-        }
+.section { padding: 4rem 3rem; max-width: 1200px; margin: 0 auto; }
+.section-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; color: var(--purple); }
 
-        body {
-            font-family: 'Fira Sans', sans-serif;
-            color: var(--ink);
-            background: var(--white);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
+.concept-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+@media (max-width: 768px) { .concept-row { grid-template-columns: 1fr; } }
+.concept-col h3 { font-size: 1.4rem; color: var(--purple); margin-bottom: 0.5rem; }
+.concept-col .gaelic { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.concept-col p { color: rgba(232, 228, 240, 0.85); }
+.concept-col ul { list-style: none; margin-top: 0.8rem; }
+.concept-col li { padding: 0.25rem 0; color: var(--muted); font-size: 0.95rem; }
+.concept-col li::before { content: "→ "; color: var(--purple); }
 
-        h1, h2, h3, .btn, .tag, .nav-links a {
-            font-family: 'Fira Mono', monospace;
-            font-weight: 500;
-        }
+.highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.highlight {
+  background: var(--card); border: 1px solid rgba(109, 74, 255, 0.15);
+  border-radius: 8px; padding: 1.8rem; backdrop-filter: blur(4px);
+  transition: border-color 0.3s;
+}
+.highlight:hover { border-color: rgba(109, 74, 255, 0.5); }
+.highlight .stat { font-size: 2rem; font-weight: 800; color: var(--purple); margin-bottom: 0.5rem; }
+.highlight .desc { color: var(--muted); font-size: 0.95rem; }
 
-        /* === NAV === */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 3rem;
-            border-bottom: 2px solid var(--gray);
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .logo span {
-            color: var(--blue);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--ink);
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--blue-dark);
-        }
-
-        /* === HERO === */
-        .hero {
-            padding: 6rem 3rem 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-tags {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            padding: 0.4rem 0.8rem;
-            border: 2px solid var(--orange);
-            color: var(--orange);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .hero-headline {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            max-width: 700px;
-        }
-
-        .hero-headline mark {
-            background: none;
-            color: var(--orange);
-            padding: 0;
-        }
-
-        .hero-subhead {
-            font-size: 1.125rem;
-            color: var(--gray-dark);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            line-height: 1.7;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.9rem 2rem;
-            font-size: 0.9rem;
-            text-decoration: none;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
-            background: var(--orange);
-            color: var(--white);
-            border-color: var(--orange);
-        }
-
-        .btn-primary:hover {
-            background: var(--orange-hover);
-            border-color: var(--orange-hover);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--ink);
-            border-color: var(--ink);
-        }
-
-        .btn-secondary:hover {
-            background: var(--ink);
-            color: var(--white);
-        }
-
-        /* === PROOF STRIP === */
-        .proof {
-            background: var(--gray);
-            padding: 2rem 3rem;
-            margin-top: 4rem;
-        }
-
-        .proof-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .proof-item {
-            border-left: 3px solid var(--blue);
-            padding-left: 1rem;
-        }
-
-        .proof-number {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--blue-dark);
-        }
-
-        .proof-label {
-            font-size: 0.85rem;
-            color: var(--gray-dark);
-        }
-
-        /* === TWO DOORS === */
-        .doors {
-            padding: 4rem 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .doors-section {
-            margin-bottom: 3rem;
-        }
-
-        .doors-headline {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .doors-headline::before {
-            content: "";
-            display: block;
-            width: 2rem;
-            height: 3px;
-            background: var(--blue);
-        }
-
-        .doors-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .doors-item {
-            padding: 1.5rem;
-            border: 1px solid var(--gray);
-            transition: border-color 0.2s ease;
-        }
-
-        .doors-item:hover {
-            border-color: var(--blue);
-        }
-
-        .doors-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .doors-desc {
-            font-size: 0.9rem;
-            color: var(--gray-dark);
-            line-height: 1.6;
-        }
-
-        /* === ABOUT TEASER === */
-        .about-teaser {
-            padding: 4rem 3rem;
-            background: var(--gray);
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .about-headline {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .about-text {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: var(--gray-dark);
-        }
-
-        /* === FOOTER === */
-        .footer {
-            padding: 3rem;
-            border-top: 2px solid var(--gray);
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--gray-dark);
-            margin-top: 4rem;
-        }
-
-        /* === RESPONSIVE === */
-        @media (max-width: 768px) {
-            .nav, .hero, .doors, .proof {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-
-            .hero-headline {
-                font-size: 1.8rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .doors-list {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+footer {
+  text-align: center; padding: 2rem;
+  border-top: 1px solid rgba(109, 74, 255, 0.1);
+  color: var(--muted); font-size: 0.85rem;
+}
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  nav ul { gap: 1rem; }
+  .hero, .section { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+</style>
 </head>
 <body>
 
-    <nav class="nav">
-        <div class="logo">SUIL<span>SYSTEMS</span></div>
-        <div class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#proof">Track Record</a>
-            <a href="about.html">About</a>
-            <a href="mailto:contact@suil.systems">Contact</a>
-        </div>
-    </nav>
+<canvas id="bg-canvas"></canvas>
 
-    <header class="hero">
-        <div class="hero-tags">
-            <span class="tag">Warsaw · Poland</span>
-            <span class="tag">Executive Coaching</span>
-        </div>
+<div class="content">
 
-        <h1 class="hero-headline">
-            Clear sight on your situation. Then we build a path <mark>forward.</mark>
-        </h1>
+<nav>
+  <div class="logo">sùil</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="mailto:sean@suil.systems">Contact</a></li>
+  </ul>
+</nav>
 
-        <p class="hero-subhead">
-            Executive coaching and strategic advisory for boards, leadership teams, and state-enterprise leadership. Fifteen years across UK, Kazakhstan, Myanmar, and Poland. Evidence-led, direct communication, no coaching clichés.
-        </p>
+<section class="hero">
+  <h1>Seán Matthew Cusick</h1>
+  <div class="subtitle">Strategist · Educator · Analyst</div>
+  <div class="tagline">sùil — see clearly first, then find the way forward.</div>
+  <p class="intro">
+    Scottish strategist and educator based in Warsaw. Nineteen years of cross-cultural
+    leadership, analysis, and communication work across the UK, Kazakhstan, Myanmar,
+    Poland, and Ukraine. I help organisations and individuals diagnose what's actually
+    happening — then build the path forward.
+  </p>
+  <div class="cta-group">
+    <a href="about.html" class="btn btn-primary">About</a>
+    <a href="mailto:sean@suil.systems" class="btn btn-outline">Get in touch</a>
+  </div>
+</section>
 
-        <div class="hero-actions">
-            <a href="mailto:contact@suil.systems" class="btn btn-primary">Start a Conversation</a>
-            <a href="about.html" class="btn btn-secondary">See My Background</a>
-        </div>
-    </header>
+<section class="section">
+  <h2 class="section-title">How I Work</h2>
+  <div class="concept-row">
+    <div class="concept-col">
+      <h3>See</h3>
+      <div class="gaelic">sùil — "eye"</div>
+      <p>Diagnosis before prescription. Understanding the situation before proposing solutions.</p>
+      <ul>
+        <li>Strategic audits &amp; situational analysis</li>
+        <li>Risk assessment &amp; compliance review</li>
+        <li>Data analysis (R, Python, SQL)</li>
+        <li>Stakeholder &amp; landscape mapping</li>
+      </ul>
+    </div>
+    <div class="concept-col">
+      <h3>Act</h3>
+      <div class="gaelic">sùil — "hope"</div>
+      <p>Forward-looking strategy. Turning clarity into concrete movement.</p>
+      <ul>
+        <li>Strategic communication advisory</li>
+        <li>Executive training &amp; business English</li>
+        <li>Bid &amp; grant writing</li>
+        <li>Process design &amp; SOPs</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <section class="proof" id="proof">
-        <div class="proof-grid">
-            <div class="proof-item">
-                <div class="proof-number">€650k+</div>
-                <div class="proof-label">Secured from ESA + Scottish Enterprise</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">300</div>
-                <div class="proof-label">Staff Managed Across 5 Branch Offices</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">19 yrs</div>
-                <div class="proof-label">Cross-Cultural Leadership Experience</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">Warsaw</div>
-                <div class="proof-label">Existing Board-Level Relationships</div>
-            </div>
-        </div>
-    </section>
+<section class="section">
+  <h2 class="section-title">Selected Highlights</h2>
+  <div class="highlights">
+    <div class="highlight">
+      <div class="stat">€500K</div>
+      <div class="desc">Secured from the European Space Agency at Alba Orbital (2018–2019).</div>
+    </div>
+    <div class="highlight">
+      <div class="stat">~300</div>
+      <div class="desc">Staff overseen as CEO of AIESEC in Kazakhstan across 5 branch offices (2015–2016).</div>
+    </div>
+    <div class="highlight">
+      <div class="stat">128pp</div>
+      <div class="desc">Researched, wrote, and published a technical booklet on microgravity applications and UK launch vehicles (Commercial Space Technologies, 2022–2025).</div>
+    </div>
+  </div>
+  <p style="margin-top: 1.5rem;"><a href="about.html" class="btn btn-outline">Full career history →</a></p>
+</section>
 
-    <section class="doors" id="services">
-        <div class="doors-section">
-            <h2 class="doors-headline">What I Work On</h2>
-            <ul class="doors-list">
-                <li class="doors-item">
-                    <h3 class="doors-title">Executive Training</h3>
-                    <p class="doors-desc">Presentation skills, negotiation, stakeholder communication for leadership teams. Built for board-level contexts, not generic workshops.</p>
-                </li>
-                <li class="doors-item">
-                    <h3 class="doors-title">Strategic Communication Advisory</h3>
-                    <p class="doors-desc">Stakeholder mapping, internal communications strategy, cross-border team alignment. For state enterprises and multinationals.</p>
-                </li>
-                <li class="doors-item">
-                    <h3 class="doors-title">Conflict Facilitation</h3>
-                    <p class="doors-desc">Boardroom dynamics, executive team friction, organisational disagreement at scale. From AIESEC experience managing 300-person organisational conflict.</p>
-                </li>
-                <li class="doors-item">
-                    <h3 class="doors-title">Business English (Leadership Level)</h3>
-                    <p class="doors-desc">Not grammar drills. Strategic communication in English for executives navigating international boardrooms, investor meetings, cross-cultural negotiations.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+<footer>
+  sùil systems · suil.systems · sean@suil.systems
+</footer>
 
-    <section class="about-teaser">
-        <h2 class="about-headline">Why This Approach?</h2>
-        <p class="about-text">
-            I read people and systems under pressure. Then help build a way forward—whether that's boardroom strategy, language barriers, or personal transition. Path toward formal psychotherapy credentialing underway.
-        </p>
-        <a href="about.html" class="btn btn-secondary">Read Full Background</a>
-    </section>
+</div>
 
-    <footer class="footer">
-        <p>Suil Systems — Seán Matthew Cusick · Warsaw, Poland</p>
-        <p style="margin-top: 0.5rem;">contact@suil.systems · suil.systems</p>
-        <p style="margin-top: 1.5rem; font-size: 0.75rem;">Non-clinical coaching and training services. Not a substitute for licensed mental health care.</p>
-    </footer>
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
 
+const canvas = document.getElementById('bg-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: false });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+const scene = new THREE.Scene();
+const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const geometry = new THREE.PlaneGeometry(2, 2);
+
+const mouse = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
+window.addEventListener('pointermove', (e) => {
+  mouse.tx = e.clientX / window.innerWidth;
+  mouse.ty = e.clientY / window.innerHeight;
+});
+
+const material = new THREE.ShaderMaterial({
+  uniforms: {
+    uTime: { value: 0 },
+    uMouse: { value: new THREE.Vector2(0.5, 0.5) },
+    uResolution: { value: new THREE.Vector2() }
+  },
+  vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    precision highp float;
+    uniform float uTime;
+    uniform vec2 uMouse;
+    uniform vec2 uResolution;
+    varying vec2 vUv;
+
+    float bayer4x4(vec2 p) {
+      vec2 r = mod(floor(p), 4.0);
+      float idx = r.y * 4.0 + r.x;
+      float vals[16];
+      vals[0]=0.0; vals[1]=8.0; vals[2]=2.0; vals[3]=10.0;
+      vals[4]=12.0; vals[5]=4.0; vals[6]=14.0; vals[7]=6.0;
+      vals[8]=3.0; vals[9]=11.0; vals[10]=1.0; vals[11]=9.0;
+      vals[12]=15.0; vals[13]=7.0; vals[14]=13.0; vals[15]=5.0;
+      int i = int(idx);
+      return vals[i] / 16.0;
+    }
+
+    float hash(vec2 p) {
+      return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+    }
+    float noise(vec2 p) {
+      vec2 i = floor(p);
+      vec2 f = fract(p);
+      f = f * f * (3.0 - 2.0 * f);
+      return mix(mix(hash(i), hash(i+vec2(1.0,0.0)), f.x),
+                 mix(hash(i+vec2(0.0,1.0)), hash(i+vec2(1.0,1.0)), f.x), f.y);
+    }
+    float fbm(vec2 p) {
+      float v = 0.0; float a = 0.5;
+      for (int i = 0; i < 4; i++) {
+        v += a * noise(p);
+        p *= 2.0; a *= 0.5;
+      }
+      return v;
+    }
+
+    vec3 bgContent(vec2 uv, float t) {
+      vec2 q = uv * 2.5;
+      q.x += sin(q.y * 3.0 + t * 0.15) * 0.4;
+      q.y += cos(q.x * 2.5 + t * 0.1) * 0.3;
+      float n = fbm(q + vec2(t * 0.03, 0.0));
+
+      float ringDist = length((uv - vec2(0.5)) * vec2(1.6, 1.0)) * 5.0 - t * 0.3;
+      float rings = sin(ringDist * 8.0) * 0.5 + 0.5;
+      rings *= smoothstep(0.0, 0.2, 0.2 - abs(fract(ringDist * 0.5) - 0.5));
+
+      vec3 baseCol = vec3(0.025, 0.012, 0.05);
+      vec3 accentCol = vec3(0.43, 0.29, 1.0);
+      vec3 col = mix(baseCol, accentCol * 0.12, n);
+      col += accentCol * 0.06 * rings;
+      return col;
+    }
+
+    void main() {
+      vec2 uv = vUv;
+      vec2 px = uv * uResolution;
+      vec2 m = vec2(uMouse.x, 1.0 - uMouse.y);
+
+      float dist = distance(uv, m);
+      float effect = smoothstep(0.45, 0.0, dist);
+      vec2 dir = (uv - m);
+      dir = length(dir) > 0.001 ? normalize(dir) : vec2(0.0);
+      float caStrength = effect * 0.025;
+
+      vec3 col;
+      col.r = bgContent(uv + dir * caStrength, uTime).r;
+      col.g = bgContent(uv, uTime).g;
+      col.b = bgContent(uv - dir * caStrength, uTime).b;
+
+      float dither = bayer4x4(px) - 0.5;
+      float ditherAmt = mix(0.008, 0.035, effect);
+      col += dither * ditherAmt;
+
+      col += vec3(0.43, 0.29, 1.0) * effect * 0.08;
+
+      float vig = smoothstep(1.4, 0.3, length((uv - 0.5) * vec2(1.3, 1.0)));
+      col *= 0.4 + 0.6 * vig;
+
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `
+});
+
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+
+function resize() {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  renderer.setSize(w, h, false);
+  material.uniforms.uResolution.value.set(w, h);
+}
+resize();
+window.addEventListener('resize', resize);
+
+const clock = new THREE.Clock();
+function animate() {
+  const t = clock.getElapsedTime();
+  mouse.x += (mouse.tx - mouse.x) * 0.08;
+  mouse.y += (mouse.ty - mouse.y) * 0.08;
+  material.uniforms.uTime.value = t;
+  material.uniforms.uMouse.value.set(mouse.x, mouse.y);
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 </body>
 </html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Seán Cusick — Suil Systems Founder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;600&family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Copy all :root and base styles from index.html exactly */
+        :root {
+            --ink: #111111;
+            --white: #FFFFFF;
+            --blue: #5B8CFF;
+            --blue-dark: #1A56DB;
+            --orange: #C23A0A;
+            --orange-hover: #9A2F08;
+            --gray: #E8E8E8;
+            --gray-dark: #777777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            color: var(--ink);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .btn, .tag, .nav-links a {
+            font-family: 'Fira Mono', monospace;
+            font-weight: 500;
+        }
+
+        /* === NAV === */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue-dark);
+        }
+
+        /* === PAGE HEADER === */
+        .page-header {
+            padding: 5rem 3rem 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-headline {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-intro {
+            font-size: 1.25rem;
+            color: var(--gray-dark);
+            line-height: 1.7;
+        }
+
+        /* === CONTENT === */
+        .content {
+            padding: 0 3rem 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .block {
+            margin-bottom: 3rem;
+        }
+
+        .block-headline {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .block-headline::before {
+            content: "";
+            display: block;
+            width: 1.5rem;
+            height: 3px;
+            background: var(--blue);
+        }
+
+        .block-text {
+            color: var(--gray-dark);
+            line-height: 1.8;
+        }
+
+        .timeline {
+            border-left: 2px solid var(--gray);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -2.1rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--blue);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-family: 'Fira Mono', monospace;
+            color: var(--blue-dark);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-role {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-detail {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+        }
+
+        /* === GLOSS CHIP === */
+        .gloss {
+            background: var(--ink);
+            color: var(--white);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-left: 4px solid var(--orange);
+        }
+
+        .gloss-word {
+            font-family: 'Fira Mono', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--orange);
+        }
+
+        .gloss-def {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* === CONTACT BOX === */
+        .contact-box {
+            background: var(--gray);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-box p {
+            margin-bottom: 1rem;
+        }
+
+        /* === FOOTER === */
+        .footer {
+            padding: 3rem;
+            border-top: 2px solid var(--gray);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .nav, .page-header, .content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .page-headline {
+                font-size: 1.75rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">SUIL<span>SYSTEMS</span></a></div>
+        <div class="nav-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#proof">Track Record</a>
+            <a href="about.html">About</a>
+            <a href="mailto:contact@suil.systems">Contact</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-headline">Seán Matthew Cusick</h1>
+        <p class="page-intro">Scottish strategist and educator based in Warsaw. Nineteen years of cross-cultural leadership, analysis, and communication work across the UK, Kazakhstan, Myanmar, and Poland.</p>
+    </header>
+
+    <section class="content">
+
+        <div class="block">
+            <h2 class="block-headline">The Name</h2>
+            <div class="gloss">
+                <div class="gloss-word">sùil</div>
+                <div class="gloss-def">Scottish Gaelic: "eye" and "hope." Historically rooted in the idea of the sun as the eye of the sky. The thesis of this practice: see clearly first, then find the way forward.</div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="block-headline">Working Style</h2>
+            <p class="block-text">
+                Diagnosed with ADHD and autism. I work as a pattern-recognition operator across disciplines rather than a narrow specialist. This shows directly in my career history: hospitality operations, NGO leadership at 300-person scale, space industry business development, data analysis, and language teaching.
+            </p>
+            <p class="block-text" style="margin-top: 1rem;">
+                That breadth is the asset. The communication risk is appearing unfocused. The fix is organising everything under one diagnostic identity—the sùil—with two clear entry points: organisations and individuals.
+            </p>
+        </div>
+
+        <div class="block">
+            <h2 class="block-headline">Career Trajectory</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2022 – Present</div>
+                    <div class="timeline-role">Founder, SMCusick Consulting / Suil Systems</div>
+                    <div class="timeline-detail">Executive training, business English, strategic communication advisory to Polish institutions including State Sugar Board and Polish State Gas.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020 – 2021</div>
+                    <div class="timeline-role">Responsive Access Ltd, Edinburgh</div>
+                    <div class="timeline-detail">Bid writing, sales, risk assessment for orbital launch services.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2018 – 2019</div>
+                    <div class="timeline-role">Alba Orbital, Glasgow</div>
+                    <div class="timeline-detail">Secured €500,000 from European Space Agency and £150,000 from Scottish Enterprise. Built university partnerships.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017 – 2018</div>
+                    <div class="timeline-role">WEStay @ Group, Bagan, Myanmar</div>
+                    <div class="timeline-detail">General Manager of Bagan Lotus Hotel. Achieved 10-star Booking.com rating. Contract ended due to political instability affecting the region.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2013 – 2017</div>
+                    <div class="timeline-role">AIESEC in Kazakhstan / TAMOS Education, Almaty</div>
+                    <div class="timeline-detail">CEO overseeing 7 departmental directors and ~300 staff across 5 branches. Secured UN partnerships. Also taught English (elementary to advanced, exam prep).</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2004 – 2012</div>
+                    <div class="timeline-role">Crowne Plaza Glasgow</div>
+                    <div class="timeline-detail">Financial reconciliation, bar operations, event coordination.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="block-headline">Current Study</h2>
+            <p class="block-text">
+                Computer Science, RNCP Level 7 professional certificate — 42 Warsaw (2025–2028). GIS for Climate Action — Esri (2025). Prior credentials in data analysis, project management, transformational leadership, and software development from CodeClan, University of Glasgow, Abertay University, and University of the Highlands and Islands.
+            </p>
+            <p class="block-text" style="margin-top: 1rem;">
+                Longer-term: enrolling in part-time counselling/psychotherapy training (UKCP/BACP or Polish-equivalent accredited programmes). Corporate consulting funds and creates time for this transition.
+            </p>
+        </div>
+
+        <div class="contact-box">
+            <p><strong>Based in Warsaw. Working with clients across Poland and internationally.</strong></p>
+            <p><a href="mailto:contact@suil.systems" style="color: var(--blue-dark);">contact@suil.systems</a></p>
+            <p style="font-size: 0.85rem; margin-top: 1.5rem;">Non-clinical coaching and training services. Not a substitute for licensed mental health care.</p>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <p>Suil Systems — Seán Matthew Cusick · Warsaw, Poland</p>
+        <p style="margin-top: 0.5rem;">contact@suil.systems · suil.systems</p>
+    </footer>
+
+</body>
+</html>

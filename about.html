@@ -1,327 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Seán Cusick — Suil Systems Founder</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;600&family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* Copy all :root and base styles from index.html exactly */
-        :root {
-            --ink: #111111;
-            --white: #FFFFFF;
-            --blue: #5B8CFF;
-            --blue-dark: #1A56DB;
-            --orange: #C23A0A;
-            --orange-hover: #9A2F08;
-            --gray: #E8E8E8;
-            --gray-dark: #777777;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 16px;
-        }
-
-        body {
-            font-family: 'Fira Sans', sans-serif;
-            color: var(--ink);
-            background: var(--white);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .btn, .tag, .nav-links a {
-            font-family: 'Fira Mono', monospace;
-            font-weight: 500;
-        }
-
-        /* === NAV === */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 3rem;
-            border-bottom: 2px solid var(--gray);
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .logo span {
-            color: var(--blue);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--ink);
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--blue-dark);
-        }
-
-        /* === PAGE HEADER === */
-        .page-header {
-            padding: 5rem 3rem 3rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .page-headline {
-            font-size: 2.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .page-intro {
-            font-size: 1.25rem;
-            color: var(--gray-dark);
-            line-height: 1.7;
-        }
-
-        /* === CONTENT === */
-        .content {
-            padding: 0 3rem 4rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .block {
-            margin-bottom: 3rem;
-        }
-
-        .block-headline {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .block-headline::before {
-            content: "";
-            display: block;
-            width: 1.5rem;
-            height: 3px;
-            background: var(--blue);
-        }
-
-        .block-text {
-            color: var(--gray-dark);
-            line-height: 1.8;
-        }
-
-        .timeline {
-            border-left: 2px solid var(--gray);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .timeline-item {
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -2.1rem;
-            top: 0.5rem;
-            width: 1rem;
-            height: 1rem;
-            background: var(--blue);
-            border-radius: 50%;
-        }
-
-        .timeline-year {
-            font-family: 'Fira Mono', monospace;
-            color: var(--blue-dark);
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-role {
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-detail {
-            font-size: 0.95rem;
-            color: var(--gray-dark);
-        }
-
-        /* === GLOSS CHIP === */
-        .gloss {
-            background: var(--ink);
-            color: var(--white);
-            padding: 2rem;
-            margin: 3rem 0;
-            border-left: 4px solid var(--orange);
-        }
-
-        .gloss-word {
-            font-family: 'Fira Mono', monospace;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--orange);
-        }
-
-        .gloss-def {
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        /* === CONTACT BOX === */
-        .contact-box {
-            background: var(--gray);
-            padding: 2rem;
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .contact-box p {
-            margin-bottom: 1rem;
-        }
-
-        /* === FOOTER === */
-        .footer {
-            padding: 3rem;
-            border-top: 2px solid var(--gray);
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--gray-dark);
-        }
-
-        /* === RESPONSIVE === */
-        @media (max-width: 768px) {
-            .nav, .page-header, .content {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-
-            .page-headline {
-                font-size: 1.75rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — sùil systems</title>
+<style>
+:root {
+  --purple: #6d4aff;
+  --purple-dim: #4a2fbf;
+  --bg: #07050d;
+  --fg: #e8e4f0;
+  --muted: #8884a0;
+  --card: rgba(15, 10, 30, 0.75);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--fg);
+  overflow-x: hidden; line-height: 1.7;
+}
+#bg-canvas {
+  position: fixed; top: 0; left: 0;
+  width: 100vw; height: 100vh; z-index: 0; pointer-events: none;
+}
+.content { position: relative; z-index: 1; }
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 3rem;
+  backdrop-filter: blur(8px);
+  background: rgba(7, 5, 13, 0.5);
+  border-bottom: 1px solid rgba(109, 74, 255, 0.15);
+  position: sticky; top: 0; z-index: 10;
+}
+nav .logo { font-size: 1.4rem; font-weight: 700; color: var(--purple); }
+nav ul { list-style: none; display: flex; gap: 2rem; }
+nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+nav a:hover { color: var(--purple); }
+main { max-width: 800px; margin: 0 auto; padding: 4rem 3rem; }
+section { margin-bottom: 4rem; }
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; margin-bottom: 0.5rem; }
+h2 { font-size: 1.5rem; font-weight: 700; color: var(--purple); margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(109, 74, 255, 0.15); }
+p { margin-bottom: 1rem; color: rgba(232, 228, 240, 0.88); }
+.tagline { font-style: italic; color: var(--purple); margin-bottom: 2rem; }
+.timeline-item { padding: 1.2rem 0; border-bottom: 1px solid rgba(109, 74, 255, 0.08); }
+.timeline-item:last-child { border-bottom: none; }
+.timeline-date { font-size: 0.85rem; color: var(--purple); font-weight: 600; }
+.timeline-role { font-size: 1.05rem; font-weight: 600; margin-top: 0.2rem; }
+.timeline-company { color: var(--muted); font-size: 0.9rem; }
+.timeline-desc { font-size: 0.95rem; color: var(--muted); margin-top: 0.3rem; }
+.note { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+footer {
+  text-align: center; padding: 2rem;
+  border-top: 1px solid rgba(109, 74, 255, 0.1);
+  color: var(--muted); font-size: 0.85rem;
+}
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  nav ul { gap: 1rem; }
+  main { padding: 2rem 1.5rem; }
+}
+</style>
 </head>
 <body>
 
-    <nav class="nav">
-        <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">SUIL<span>SYSTEMS</span></a></div>
-        <div class="nav-links">
-            <a href="index.html#services">Services</a>
-            <a href="index.html#proof">Track Record</a>
-            <a href="about.html">About</a>
-            <a href="mailto:contact@suil.systems">Contact</a>
-        </div>
-    </nav>
+<canvas id="bg-canvas"></canvas>
 
-    <header class="page-header">
-        <h1 class="page-headline">Seán Matthew Cusick</h1>
-        <p class="page-intro">Scottish strategist and educator based in Warsaw. Nineteen years of cross-cultural leadership, analysis, and communication work across the UK, Kazakhstan, Myanmar, and Poland.</p>
-    </header>
+<div class="content">
 
-    <section class="content">
+<nav>
+  <div class="logo">sùil</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="mailto:sean@suil.systems">Contact</a></li>
+  </ul>
+</nav>
 
-        <div class="block">
-            <h2 class="block-headline">The Name</h2>
-            <div class="gloss">
-                <div class="gloss-word">sùil</div>
-                <div class="gloss-def">Scottish Gaelic: "eye" and "hope." Historically rooted in the idea of the sun as the eye of the sky. The thesis of this practice: see clearly first, then find the way forward.</div>
-            </div>
-        </div>
+<main>
 
-        <div class="block">
-            <h2 class="block-headline">Working Style</h2>
-            <p class="block-text">
-                Diagnosed with ADHD and autism. I work as a pattern-recognition operator across disciplines rather than a narrow specialist. This shows directly in my career history: hospitality operations, NGO leadership at 300-person scale, space industry business development, data analysis, and language teaching.
-            </p>
-            <p class="block-text" style="margin-top: 1rem;">
-                That breadth is the asset. The communication risk is appearing unfocused. The fix is organising everything under one diagnostic identity—the sùil—with two clear entry points: organisations and individuals.
-            </p>
-        </div>
+<h1>Seán Matthew Cusick</h1>
+<p class="tagline">sùil — see clearly first, then find the way forward.</p>
 
-        <div class="block">
-            <h2 class="block-headline">Career Trajectory</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">2022 – Present</div>
-                    <div class="timeline-role">Founder, SMCusick Consulting / Suil Systems</div>
-                    <div class="timeline-detail">Executive training, business English, strategic communication advisory to Polish institutions including State Sugar Board and Polish State Gas.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2020 – 2021</div>
-                    <div class="timeline-role">Responsive Access Ltd, Edinburgh</div>
-                    <div class="timeline-detail">Bid writing, sales, risk assessment for orbital launch services.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2018 – 2019</div>
-                    <div class="timeline-role">Alba Orbital, Glasgow</div>
-                    <div class="timeline-detail">Secured €500,000 from European Space Agency and £150,000 from Scottish Enterprise. Built university partnerships.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2017 – 2018</div>
-                    <div class="timeline-role">WEStay @ Group, Bagan, Myanmar</div>
-                    <div class="timeline-detail">General Manager of Bagan Lotus Hotel. Achieved 10-star Booking.com rating. Contract ended due to political instability affecting the region.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2013 – 2017</div>
-                    <div class="timeline-role">AIESEC in Kazakhstan / TAMOS Education, Almaty</div>
-                    <div class="timeline-detail">CEO overseeing 7 departmental directors and ~300 staff across 5 branches. Secured UN partnerships. Also taught English (elementary to advanced, exam prep).</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2004 – 2012</div>
-                    <div class="timeline-role">Crowne Plaza Glasgow</div>
-                    <div class="timeline-detail">Financial reconciliation, bar operations, event coordination.</div>
-                </div>
-            </div>
-        </div>
+<section>
+  <p>
+    Scottish strategist and educator based in Warsaw. Nineteen years of cross-cultural
+    leadership, analysis, and communication work across the UK, Kazakhstan, Myanmar,
+    Poland, and Ukraine.
+  </p>
+</section>
 
-        <div class="block">
-            <h2 class="block-headline">Current Study</h2>
-            <p class="block-text">
-                Computer Science, RNCP Level 7 professional certificate — 42 Warsaw (2025–2028). GIS for Climate Action — Esri (2025). Prior credentials in data analysis, project management, transformational leadership, and software development from CodeClan, University of Glasgow, Abertay University, and University of the Highlands and Islands.
-            </p>
-            <p class="block-text" style="margin-top: 1rem;">
-                Longer-term: enrolling in part-time counselling/psychotherapy training (UKCP/BACP or Polish-equivalent accredited programmes). Corporate consulting funds and creates time for this transition.
-            </p>
-        </div>
+<section>
+  <h2>The Name</h2>
+  <p>
+    <strong>sùil</strong> — Scottish Gaelic for "eye" and "hope." Historically rooted in
+    the idea of the sun as the eye of the sky. The practice: diagnose what's actually
+    happening, then build the path forward.
+  </p>
+</section>
 
-        <div class="contact-box">
-            <p><strong>Based in Warsaw. Working with clients across Poland and internationally.</strong></p>
-            <p><a href="mailto:contact@suil.systems" style="color: var(--blue-dark);">contact@suil.systems</a></p>
-            <p style="font-size: 0.85rem; margin-top: 1.5rem;">Non-clinical coaching and training services. Not a substitute for licensed mental health care.</p>
-        </div>
+<section>
+  <h2>Working Style</h2>
+  <p>
+    Cross-disciplinary by disposition. The career history reflects this: NGO leadership
+    at 300-person scale, space industry business development, data analysis, language
+    teaching, construction industry compliance. The breadth is the asset — organising
+    everything under one identity, the sùil, provides two clear entry points: organisations
+    and individuals.
+  </p>
+</section>
 
-    </section>
+<section>
+  <h2>Career Trajectory</h2>
 
-    <footer class="footer">
-        <p>Suil Systems — Seán Matthew Cusick · Warsaw, Poland</p>
-        <p style="margin-top: 0.5rem;">contact@suil.systems · suil.systems</p>
-    </footer>
+  <div class="timeline-item">
+    <div class="timeline-date">2025 – Present</div>
+    <div class="timeline-role">Founder, Suil Systems</div>
+    <div class="timeline-desc">Executive training, business English, strategic communication advisory to Polish institutions.</div>
+  </div>
 
+  <div class="timeline-item">
+    <div class="timeline-date">Oct 2022 – Apr 2025</div>
+    <div class="timeline-role">Management Consultant &amp; Business Analyst</div>
+    <div class="timeline-company">Commercial Space Technologies Ltd · London (remote from Warsaw)</div>
+    <div class="timeline-desc">Technical research on microgravity applications and UK launch vehicles. Published a 128-page booklet and companion survey. Data analysis using R, Python, SQL, and Excel. Designed conference agendas and training sessions for international satellite launch clients. Risk assessment and compliance documentation.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Apr 2022 – Sep 2022</div>
+    <div class="timeline-role">Data &amp; Compliance Manager</div>
+    <div class="timeline-company">Hempire International · Kraków (remote)</div>
+    <div class="timeline-desc">UK office establishment for a Polish/Ukrainian hempcrete construction company. Organisational activity tracking, grant writing, financial forecasting, compliance documentation, and risk assessment for construction projects.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Feb 2020 – Dec 2021</div>
+    <div class="timeline-role">Business Analyst</div>
+    <div class="timeline-company">Responsive Access Ltd · Edinburgh</div>
+    <div class="timeline-desc">Bid writing, sales, and risk assessment for orbital launch services. Market research, competitor analysis, marketing strategy and materials.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Aug 2018 – Aug 2019</div>
+    <div class="timeline-role">Head of Business Development</div>
+    <div class="timeline-company">Alba Orbital · Glasgow</div>
+    <div class="timeline-desc">Secured €500,000 from the European Space Agency and £150,000 from Scottish Enterprise. University partnerships, standard operating procedures, sales strategy, stakeholder engagement.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Dec 2017 – Jun 2018</div>
+    <div class="timeline-role">Chief Information Officer (acting General Manager)</div>
+    <div class="timeline-company">WEStay @ Group · Bagan, Myanmar</div>
+    <div class="timeline-desc">Hotel operations management, achieved 10-star Booking.com rating. Staff training, rebranding conference, health/hygiene/safety protocols, SOPs. Contract ended due to political instability in the region.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Jun 2013 – Sep 2017</div>
+    <div class="timeline-role">Teacher of English to Speakers of Other Languages</div>
+    <div class="timeline-company">TAMOS Education · Almaty, Kazakhstan</div>
+    <div class="timeline-desc">Elementary to advanced, including Business English. Exam preparation (IELTS, TOEFL, SAT). Curriculum design across age groups from nursery to adults.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Jul 2015 – Jun 2016</div>
+    <div class="timeline-role">Chief Executive Officer</div>
+    <div class="timeline-company">AIESEC in Kazakhstan · Almaty</div>
+    <div class="timeline-desc">Oversaw 7 departmental directors and ~300 staff across 5 branch offices. 5-year strategy. UN partnerships aligned with Sustainable Development Goals. Board reporting and quarterly presentations.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Jun 2013 – Jul 2015</div>
+    <div class="timeline-role">Director of Organisational Development</div>
+    <div class="timeline-company">AIESEC in Kazakhstan · Almaty</div>
+    <div class="timeline-desc">Annual strategy, supported 5 branches (established 2 new offices). Partnership building, conference organisation, conflict resolution.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Feb 2012 – May 2013</div>
+    <div class="timeline-role">Customer Service Representative</div>
+    <div class="timeline-company">Teleperformance UK · Glasgow</div>
+    <div class="timeline-desc">Waitrose Wines and John Lewis accounts. Order processing, complaint resolution, CRM management.</div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">Jun 2006 – Jan 2012</div>
+    <div class="timeline-role">Billing &amp; Accounting Assistant / Event Server</div>
+    <div class="timeline-company">Crowne Plaza Glasgow · Glasgow</div>
+    <div class="timeline-desc">Financial reconciliation, invoice processing, bar and event operations.</div>
+  </div>
+
+</section>
+
+<section>
+  <h2>Continuing Professional Development</h2>
+  <p>
+    GIS for Climate Action — Esri (2025). Prior coursework in data analysis, project
+    management, transformational leadership, and software development through CodeClan,
+    University of Glasgow, Abertay University, and University of the Highlands and Islands.
+  </p>
+  <p class="note">
+    Computer Science studies at 42 Warsaw (RNCP Level 7) are currently postponed to
+    prioritise professional practice.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  sùil systems · suil.systems · sean@suil.systems
+</footer>
+
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+const canvas = document.getElementById('bg-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: false });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+const scene = new THREE.Scene();
+const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const geometry = new THREE.PlaneGeometry(2, 2);
+
+const mouse = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
+window.addEventListener('pointermove', (e) => {
+  mouse.tx = e.clientX / window.innerWidth;
+  mouse.ty = e.clientY / window.innerHeight;
+});
+
+const material = new THREE.ShaderMaterial({
+  uniforms: {
+    uTime: { value: 0 },
+    uMouse: { value: new THREE.Vector2(0.5, 0.5) },
+    uResolution: { value: new THREE.Vector2() }
+  },
+  vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    precision highp float;
+    uniform float uTime;
+    uniform vec2 uMouse;
+    uniform vec2 uResolution;
+    varying vec2 vUv;
+
+    float bayer4x4(vec2 p) {
+      vec2 r = mod(floor(p), 4.0);
+      float idx = r.y * 4.0 + r.x;
+      float vals[16];
+      vals[0]=0.0; vals[1]=8.0; vals[2]=2.0; vals[3]=10.0;
+      vals[4]=12.0; vals[5]=4.0; vals[6]=14.0; vals[7]=6.0;
+      vals[8]=3.0; vals[9]=11.0; vals[10]=1.0; vals[11]=9.0;
+      vals[12]=15.0; vals[13]=7.0; vals[14]=13.0; vals[15]=5.0;
+      int i = int(idx);
+      return vals[i] / 16.0;
+    }
+
+    float hash(vec2 p) {
+      return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+    }
+    float noise(vec2 p) {
+      vec2 i = floor(p);
+      vec2 f = fract(p);
+      f = f * f * (3.0 - 2.0 * f);
+      return mix(mix(hash(i), hash(i+vec2(1.0,0.0)), f.x),
+                 mix(hash(i+vec2(0.0,1.0)), hash(i+vec2(1.0,1.0)), f.x), f.y);
+    }
+    float fbm(vec2 p) {
+      float v = 0.0; float a = 0.5;
+      for (int i = 0; i < 4; i++) {
+        v += a * noise(p);
+        p *= 2.0; a *= 0.5;
+      }
+      return v;
+    }
+
+    vec3 bgContent(vec2 uv, float t) {
+      vec2 q = uv * 2.5;
+      q.x += sin(q.y * 3.0 + t * 0.15) * 0.4;
+      q.y += cos(q.x * 2.5 + t * 0.1) * 0.3;
+      float n = fbm(q + vec2(t * 0.03, 0.0));
+
+      float ringDist = length((uv - vec2(0.5)) * vec2(1.6, 1.0)) * 5.0 - t * 0.3;
+      float rings = sin(ringDist * 8.0) * 0.5 + 0.5;
+      rings *= smoothstep(0.0, 0.2, 0.2 - abs(fract(ringDist * 0.5) - 0.5));
+
+      vec3 baseCol = vec3(0.025, 0.012, 0.05);
+      vec3 accentCol = vec3(0.43, 0.29, 1.0);
+      vec3 col = mix(baseCol, accentCol * 0.12, n);
+      col += accentCol * 0.06 * rings;
+      return col;
+    }
+
+    void main() {
+      vec2 uv = vUv;
+      vec2 px = uv * uResolution;
+      vec2 m = vec2(uMouse.x, 1.0 - uMouse.y);
+
+      float dist = distance(uv, m);
+      float effect = smoothstep(0.45, 0.0, dist);
+      vec2 dir = (uv - m);
+      dir = length(dir) > 0.001 ? normalize(dir) : vec2(0.0);
+      float caStrength = effect * 0.025;
+
+      vec3 col;
+      col.r = bgContent(uv + dir * caStrength, uTime).r;
+      col.g = bgContent(uv, uTime).g;
+      col.b = bgContent(uv - dir * caStrength, uTime).b;
+
+      float dither = bayer4x4(px) - 0.5;
+      float ditherAmt = mix(0.008, 0.035, effect);
+      col += dither * ditherAmt;
+
+      col += vec3(0.43, 0.29, 1.0) * effect * 0.08;
+
+      float vig = smoothstep(1.4, 0.3, length((uv - 0.5) * vec2(1.3, 1.0)));
+      col *= 0.4 + 0.6 * vig;
+
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `
+});
+
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+
+function resize() {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  renderer.setSize(w, h, false);
+  material.uniforms.uResolution.value.set(w, h);
+}
+resize();
+window.addEventListener('resize', resize);
+
+const clock = new THREE.Clock();
+function animate() {
+  const t = clock.getElapsedTime();
+  mouse.x += (mouse.tx - mouse.x) * 0.08;
+  mouse.y += (mouse.ty - mouse.y) * 0.08;
+  material.uniforms.uTime.value = t;
+  material.uniforms.uMouse.value.set(mouse.x, mouse.y);
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 </body>
 </html>
